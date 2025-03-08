@@ -1,0 +1,93 @@
+# 2.1
+awesome_sauce = list(range(21))
+print(awesome_sauce)
+
+#2.2
+awesome_sauce = list(range(21))
+
+def squareList(input_list):
+    squared_list = [x**2 for x in input_list]
+    return squared_list
+
+squared_sauce = squareList(awesome_sauce)
+
+print(squared_sauce)
+
+#2.3
+squared_sauce = squareList(awesome_sauce)
+
+def first_fifteen_elements(input_list):
+    return input_list[:15]
+
+print(first_fifteen_elements(squared_sauce))
+
+#2.4
+every_5th = every_fifth_element(squared_sauce)
+
+def every_fifth_element(input_list):
+    return input_list[4::5]
+
+print(every_fifth_element(squared_sauce))
+
+
+
+#2.5
+
+squared_sauce = squareList(awesome_sauce)
+
+def fancy_function(input_list):
+    return input_list[-3::-3]
+
+print(fancy_function(squared_sauce))
+
+#3.1
+def create_2d_list():
+    matrix = []
+    num = 1
+
+    for i in range(5):
+        row = []
+        for j in range(5):
+            row.append(num)
+            num += 1
+        matrix.append(row)
+
+    return matrix
+
+matrix = create_2d_list()
+
+print(matrix)
+
+#3.2
+
+def modified_2d_list(matrix):
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] % 3 == 0:
+                matrix[i][j] = "?"
+    return matrix
+
+matrix = create_2d_list()
+
+modified_matrix = modified_2d_list(matrix)
+
+print(modified_matrix)
+
+#3.3
+
+def sum_non_q_elements(matrix):
+    total = 0
+    for row in matrix:
+        for element in row:
+            if element != "?":
+                total += element
+
+    return total
+
+matrix = create_2d_list()
+
+new_matrix = modified_2d_list(matrix)
+
+sum_result = sum_non_q_elements(new_matrix)
+
+print(sum_result)
