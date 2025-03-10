@@ -1,0 +1,87 @@
+#1
+import numpy as np
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def containsPrimes(arr):
+    return np.array([row for row in arr if any(is_prime(num) for num in row)])
+
+arr = np.array([[2, 3, 5], [4, 6, 8], [11, 13, 17], [7, 10, 13]])
+prime_clusters = containsPrimes(arr)
+
+print(prime_clusters)
+
+#2.1
+import numpy as np
+
+def checkerboard_zeros():
+    return np.zeros((8, 8), dtype=int)
+
+checkerboard1 = checkerboard_zeros()
+print("Checkerboard with zeros:\n", checkerboard1)
+
+#2.2
+def checkerboard_odd_rows():
+    board = np.zeros((8, 8), dtype=int)
+    board[::2, ::2] = 1
+    return board
+
+checkerboard2 = checkerboard_odd_rows()
+print("Checkerboard with odd rows:\n", checkerboard2)
+
+#2.3
+def checkerboard():
+    board = np.zeros((8, 8), dtype=int)
+    board[::2, ::2] = 1  # Set alternating ones in odd rows
+    board[1::2, 1::2] = 1  # Offset the ones for even rows
+    return board
+
+checkerboard3 = checkerboard()
+print("Complete Checkerboard:\n", checkerboard3)
+
+#2.4
+def reverse_checkerboard():
+    board = np.ones((8, 8), dtype=int)
+    board[::2, ::2] = 0
+    board[1::2, 1::2] = 0
+    return board
+
+reverse_checkerboard_result = reverse_checkerboard()
+print("Reversed Checkerboard:\n", reverse_checkerboard_result)
+
+#3
+import numpy as np
+
+def expansion(strings, spaces):
+    space_str = ' ' * spaces  
+    return np.array([space_str.join(list(word)) for word in strings])
+
+universe = np.array(['galaxy', 'clusters'])
+
+expanded_universe_1 = expansion(universe, 1)
+print("Expanded Universe (1 space):\n", expanded_universe_1)
+
+expanded_universe_2 = expansion(universe, 2)
+print("Expanded Universe (2 spaces):\n", expanded_universe_2)
+
+#4
+import numpy as np
+
+
+def secondDimmest(arr):
+    return np.sort(arr, axis=0)[1]
+
+
+np.random.seed(123) 
+stars = np.random.randint(500, 2000, (5, 5))
+
+second_dimmest_stars = secondDimmest(stars)
+
+print("Star Luminosity Data:\n", stars)
+print("Second Dimmest Stars:\n", second_dimmest_stars)
